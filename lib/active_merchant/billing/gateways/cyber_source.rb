@@ -560,7 +560,9 @@ module ActiveMerchant #:nodoc:
           xml.tag! 'pinlessDebitService', {'run' => 'true'}
         else
           add_auth_service(xml, payment_method, options)
-          xml.tag! 'ccCaptureService', {'run' => 'true'}
+          xml.tag! 'ccCaptureService', {'run' => 'true'} do
+            xml.tag! 'purchasingLevel', '3'
+          end
         end
       end
 
